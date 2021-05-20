@@ -7,7 +7,7 @@ public static PaisDao getPaisDao(String type) {
 		
 		switch (type) {
 		case "mysql": 
-			return new PaisDaoMySQL();
+			return new  PaisDaoPostgreSQL();
 		case "postgresql":
 			return new PaisDaoPostgreSQL();
 		default:
