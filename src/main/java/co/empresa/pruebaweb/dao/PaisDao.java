@@ -13,7 +13,7 @@ public interface PaisDao {
 	public void delete(int id) throws SQLException;
 	public void update(Pais pais) throws SQLException;
 	public List<Pais> selecAll();
-	public Pais selec(int id);
+	public Pais selec(String id);
 	
 	
 	

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 public class Pais implements Serializable {
 
-int id;
+String id;
 String nombre;
 
 

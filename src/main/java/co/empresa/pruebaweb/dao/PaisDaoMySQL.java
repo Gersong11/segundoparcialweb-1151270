@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.empresa.pruebaweb.modelo.Pais;
-import co.empresa.pruebaweb.modelo.Usuario;
 import co.empresa.pruebaweb.util.ConexionMySQL;
-import co.empresa.pruebaweb.util.ConexionPostgreSQL;
 
 public class PaisDaoMySQL implements PaisDao{
 
@@ -89,7 +87,7 @@ public List<Pais> selecAll() {
 		while (rs.next()) {
 			String id = rs.getString("id");
 			String nombre = rs.getString("nombre");
-			paises.add(new Pais(Integer.parseInt(id),nombre));
+			paises.add(new Pais(id,nombre));
 			
 		}
 		
@@ -101,12 +99,12 @@ public List<Pais> selecAll() {
 
 
 
-public Pais selec(int id) {
+public Pais selec(String id) {
 	Pais pais = null;
 	
 	try {
 		PreparedStatement prepareStatement = conexion.setpreparePreparedStatement(SELECT_USUARIO_BY_ID);
-		prepareStatement.setInt(1, id);
+		prepareStatement.setString(1, id);
 		ResultSet rs = conexion.query();
 		while (rs.next()) {
 			

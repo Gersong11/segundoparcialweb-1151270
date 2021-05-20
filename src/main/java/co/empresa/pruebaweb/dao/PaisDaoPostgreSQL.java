@@ -14,9 +14,9 @@ public class PaisDaoPostgreSQL implements PaisDao {
 
 	private ConexionPostgreSQL conexion;
 	
-	private final static String INSERT_USUARIO_SQL = "INSERT INTO COUNTRY (id,nombre) VALUES (?,?);";
+	private final static String INSERT_USUARIO_SQL = "INSERT INTO COUNTRY (id,name) VALUES (?,?);";
 	private final static String DELETE_USUARIO_SQL = "DELETE FROM COUNTRY WHERE id=? ;";
-	private final static String UPDATE_USUARIO_SQL = "UPDATE COUNTRY SET nombre=? WHERE id=?;";
+	private final static String UPDATE_USUARIO_SQL = "UPDATE COUNTRY SET name=? WHERE id=?;";
 	private final static String SELECT_USUARIO_BY_ID = "SELECT * FROM COUNTRY WHERE id= ?;";
 	private final static String SELECT_ALL_USUARIO = "SELECT * FROM public.country";
 	
@@ -85,7 +85,7 @@ public class PaisDaoPostgreSQL implements PaisDao {
 			while (rs.next()) {
 				String id = rs.getString("id");
 				String nombre = rs.getString("name");
-				paises.add(new Pais(Integer.parseInt(id),nombre));
+				paises.add(new Pais(id,nombre));
 				
 			}
 			
@@ -98,12 +98,12 @@ public class PaisDaoPostgreSQL implements PaisDao {
 
 
 	
-	public Pais selec(int id) {
+	public Pais selec(String id) {
 		Pais pais = null;
 		
 		try {
 			PreparedStatement prepareStatement = conexion.setpreparePreparedStatement(SELECT_USUARIO_BY_ID);
-			prepareStatement.setInt(1, id);
+			prepareStatement.setString(1, id);
 			ResultSet rs = conexion.query();
 			while (rs.next()) {
 				

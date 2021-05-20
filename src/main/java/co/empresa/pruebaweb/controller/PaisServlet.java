@@ -97,14 +97,14 @@ public class PaisServlet extends HttpServlet {
 	
 	public void insertarPais(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		
-		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println("se llamo insertar");
+		String id = request.getParameter("id");
 		String nombre = request.getParameter("nombre");
 		
 		if(paisDao.selec(id)==null) {
 		
 		
-			Pais pais = new Pais();
+			Pais pais = new Pais(id,nombre);
 	
 		this.paisDao.insert(pais);
 		response.sendRedirect("list");
@@ -119,7 +119,7 @@ public class PaisServlet extends HttpServlet {
 	
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("id"));
+		String id = request.getParameter("id");
 		Pais paisactual = this.paisDao.selec(id);
 		request.setAttribute("pais",paisactual);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("pais.jsp");
@@ -129,7 +129,7 @@ public class PaisServlet extends HttpServlet {
 	
 	public void ActualizarPais(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		int id = Integer.parseInt(request.getParameter("id"));
+		String id = request.getParameter("id");
 		String nombre = request.getParameter("nombre");
 		
 	

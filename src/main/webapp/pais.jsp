@@ -30,10 +30,10 @@
                     <div class="card-body">
 
                         <c:if test="${pais != null}">
-                            <form action="update" method="post">
+                            <form action="update" method="get">
                         </c:if>
                         <c:if test="${pais == null}">
-                            <form action="insert" method="post">
+                            <form action="insert" method="get">
                         </c:if>
 
                         <caption>
@@ -48,9 +48,9 @@
                         </caption>
 
                         <c:if test="${pais != null}">
-                            <input type="hidden" name="id" value="<c:out value='${pais.id}' />" />
+                            <input type="hidden" name="id2" value="<c:out value='${pais.id}' />" />
                         </c:if>
-
+						  <label>id</label><input type="text" name="id" value=""  class="form-control"/>
                         <fieldset class="form-group">
                             <label>Nombre de Pais</label> <input type="text" value="<c:out value='${pais.nombre}' />" class="form-control" name="nombre" required="required">
                         </fieldset>
