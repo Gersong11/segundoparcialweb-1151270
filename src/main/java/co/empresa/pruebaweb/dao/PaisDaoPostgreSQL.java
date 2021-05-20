@@ -43,10 +43,10 @@ public class PaisDaoPostgreSQL implements PaisDao {
 	}
 
 	
-	public void delete(int id) throws SQLException {
+	public void delete(String id) throws SQLException {
 		try {
 			PreparedStatement prepareStatement = conexion.setpreparePreparedStatement(DELETE_USUARIO_SQL);
-			prepareStatement.setInt(1, id);
+			prepareStatement.setString(1, id);
 			
 			
 			conexion.execute();
@@ -104,10 +104,12 @@ public class PaisDaoPostgreSQL implements PaisDao {
 		try {
 			PreparedStatement prepareStatement = conexion.setpreparePreparedStatement(SELECT_USUARIO_BY_ID);
 			prepareStatement.setString(1, id);
+			System.out.println(prepareStatement);
 			ResultSet rs = conexion.query();
+			System.out.println(rs);
 			while (rs.next()) {
 				
-				String nombre = rs.getString("nombre");
+				String nombre = rs.getString("name");
 				
 				pais = new Pais(id,nombre);
 				

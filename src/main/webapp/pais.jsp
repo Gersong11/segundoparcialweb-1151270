@@ -48,9 +48,11 @@
                         </caption>
 
                         <c:if test="${pais != null}">
-                            <input type="hidden" name="id2" value="<c:out value='${pais.id}' />" />
+                            <input type="hidden" name="id" value="<c:out value='${pais.id}' />" />
                         </c:if>
+                         <c:if test="${pais == null}">
 						  <label>id</label><input type="text" name="id" value=""  class="form-control"/>
+                       </c:if>
                         <fieldset class="form-group">
                             <label>Nombre de Pais</label> <input type="text" value="<c:out value='${pais.nombre}' />" class="form-control" name="nombre" required="required">
                         </fieldset>

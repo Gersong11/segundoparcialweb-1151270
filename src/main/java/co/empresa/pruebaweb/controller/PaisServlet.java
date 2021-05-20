@@ -120,7 +120,9 @@ public class PaisServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
+		System.out.println(id);
 		Pais paisactual = this.paisDao.selec(id);
+		System.out.println(paisactual.getId()+paisactual.getNombre());
 		request.setAttribute("pais",paisactual);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("pais.jsp");
 		dispatcher.forward(request, response);
@@ -142,7 +144,7 @@ public class PaisServlet extends HttpServlet {
 	}
 	
 	public void eliminarPais(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	int id = Integer.parseInt(request.getParameter("id"));
+	String id = request.getParameter("id");
 	
 	
 	
